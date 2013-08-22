@@ -5,6 +5,7 @@ Ensure you have the following tools installed:
 * virtualbox - https://www.virtualbox.org/
 * vagrant - http://www.vagrantup.com/
 * librarian-puppet - https://github.com/rodjek/librarian-puppet
+	* puppet installation is optional, the modules have been generated and pushed to the repo. It's necessary only if you think the modules are outdated
 
 ## Vagrant Setup
 Do the following:
