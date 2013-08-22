@@ -1,0 +1,6 @@
+.tmp/
+.vagrant
+modules/
+.librarian/
+*.lock
+.project
