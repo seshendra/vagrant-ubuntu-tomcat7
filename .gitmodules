@@ -1,0 +1,6 @@
+[submodule "apt"]
+      path = manifests/modules/apt
+      url = https://github.com/puppetlabs/puppetlabs-apt.git
+[submodule "stdlib"]
+	path = manifests/modules/stdlib
+	url = https://github.com/puppetlabs/puppetlabs-stdlib.git
