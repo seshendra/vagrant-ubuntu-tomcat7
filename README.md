@@ -5,7 +5,7 @@ Ensure you have the following tools installed:
 * virtualbox - https://www.virtualbox.org/
 * vagrant - http://www.vagrantup.com/
 * librarian-puppet - https://github.com/rodjek/librarian-puppet
-	* puppet installation is optional, the modules have been generated and pushed to the repo. It's necessary only if you think the modules are outdated
+	* puppet installation is optional, the modules have been added as gitsubmodules and pushed to the repo. It's necessary only if you think the modules are outdated
 
 ## Vagrant Setup
 Do the following:
@@ -13,6 +13,8 @@ Do the following:
 	* This will download the VM for you
 * git clone https://github.com/seshendra/vagrant-ubuntu-tomcat7.git
 	* clone this repoistory (it's your working vagrant location)
+* If librarian-puppet is not installed, use ```git submodule init``` and ```git submodule update``` from the project root directory
+	* The above step will clone the puppet modules and you can skip to the next step
 * $ cd vagrant-ubuntu-tomcat7/manifests
 * $ librarian-puppet install
 	* grabs the puppet modules for you
