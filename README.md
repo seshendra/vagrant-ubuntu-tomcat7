@@ -17,7 +17,7 @@ Do the following:
 	* grabs the puppet modules for you
 * $ cd ..
 * $ vagrant up
-	* brings up the VM.
+	* brings up the VM with tomcat and java installed.
 
 ## Deployment Details
 * Tomcat is set at auto-start to false
