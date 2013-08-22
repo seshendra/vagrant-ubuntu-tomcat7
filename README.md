@@ -1,4 +1,4 @@
-# Ubuntu Precise32 with Apache Tomcat 7
+# Ubuntu Precise32 with Tomcat 7
 
 ## Pre-requisites
 Ensure you have the following tools installed:
