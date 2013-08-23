@@ -24,6 +24,8 @@ Do the following:
 * $ ```cd ..```
 * $ ```vagrant up```
 	* brings up the VM with tomcat and java installed.
+	* This can take anywhere between 20-30 minutes, so issue the command and go have some coffee or attend a meeting or watch a video while vagrant does it's job.
+	* If you are in a VPN, ensure *ubuntu.com and *apache.com are open for downloads in your organization.
 
 ## Deployment Details
 * Tomcat is set at auto-start to false
