@@ -1,4 +1,7 @@
-# Ubuntu Precise32 with Tomcat 7
+# Java/J2EE development environment
+
+This vagrant image will kick start your development in a self contained ubuntu precise32 box with all the neccessities installed. The developers just need to configure their eclipse to the shared tomcat filesystem and it's "hakuna matata" all over!
+Will add more instructions with a sample project in the next few days.
 
 ## Pre-requisites
 Ensure you have the following tools installed:
