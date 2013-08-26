@@ -71,7 +71,7 @@ class awmapi-environment-setup {
   }
   exec { "get_tomcat":
     cwd       => "/tmp",
-    command   => "wget ${tomcat_url} -O tomcat.tar.gz > /vagrant/.tomcat_get_tomcat",
+    command   => "wget ${tomcat_url} -O tomcat.tar.gz > /opt/.tomcat_get_tomcat",
     creates   => "/opt/.tomcat_get_tomcat",
     timeout   => 900,
     require   => Package["wget"],
