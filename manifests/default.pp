@@ -1,4 +1,4 @@
-class awmapi-environment-setup {
+class java-development-env {
   include apt
   
   apt::ppa { "ppa:webupd8team/java": }
@@ -78,13 +78,13 @@ class awmapi-environment-setup {
     notify    => Exec["extract_tomcat"],
   }
   exec { "extract_tomcat":
-    cwd         => "/opt",
+    cwd         => "/vagrant",
     command     => "tar zxf /tmp/tomcat.tar.gz ; mv apache* tomcat",
-    creates     => "/opt/tomcat",
+    creates     => "/vagrant/tomcat",
     require     => Exec["get_tomcat"],
     refreshonly => true,
   }
-	file { "/opt/tomcat/conf/tomcat-users.xml":
+	file { "/vagrant/tomcat/conf/tomcat-users.xml":
 		ensure    => present,
 		content   => "<?xml version='1.0' encoding='utf-8'?>
 	<tomcat-users>
@@ -93,7 +93,7 @@ class awmapi-environment-setup {
 		require   => Exec["extract_tomcat"],
 	  }
 	
-  file { "/opt/tomcat":
+  file { "/vagrant/tomcat":
     ensure    => directory,
     owner     => "vagrant",
     mode      => 0755,
@@ -103,12 +103,12 @@ class awmapi-environment-setup {
   file { "/etc/supervisor/conf.d/tomcat.conf":
     ensure    => present,
     content   => "[program:tomcat]
-command=/opt/tomcat/bin/catalina.sh run
-directory=/opt/tomcat/bin
+command=/vagrant/tomcat/bin/catalina.sh run
+directory=/vagrant/tomcat/bin
 autostart=no
 user=vagrant
 stopsignal=QUIT",
-    require   => [ Package["supervisor"], File["/opt/tomcat/conf/tomcat-users.xml"] ],
+    require   => [ Package["supervisor"], File["/vagrant/tomcat/conf/tomcat-users.xml"] ],
     notify    => Exec["update_supervisor"],
   }
   exec { "update_supervisor":
@@ -117,6 +117,6 @@ stopsignal=QUIT",
   }
 }
 
-include awmapi-environment-setup 
+include java-development-env
 
 
