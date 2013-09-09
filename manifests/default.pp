@@ -1,5 +1,6 @@
 class java-development-env {
   include apt
+  include maven
   
   apt::ppa { "ppa:webupd8team/java": }
 
@@ -17,8 +18,7 @@ class java-development-env {
   package { ["vim",
              "curl",
              "git-core",
-			       "maven",
-			       "expect",
+			 "expect",
              "bash"]:
     ensure => present,
     require => Exec["apt-get update"],
@@ -41,7 +41,11 @@ class java-development-env {
     logoutput => true,
   }
 
-    
+  maven::settings { 'mvn-settings' :
+		local_repo          => '/vagrant/maven/.m2/repository'
+  }
+
+  
   $tomcat_url = "http://apache.mirrors.pair.com/tomcat/tomcat-7/v7.0.42/bin/apache-tomcat-7.0.42.tar.gz"
    
   Exec {

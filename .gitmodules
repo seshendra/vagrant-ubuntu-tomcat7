@@ -7,3 +7,6 @@
 [submodule "manifests/modules/maven"]
 	path = manifests/modules/maven
 	url = https://github.com/maestrodev/puppet-maven.git
+[submodule "manifests/modules/wget"]
+	path = manifests/modules/wget
+	url = https://github.com/maestrodev/puppet-wget
