@@ -4,3 +4,6 @@
 [submodule "stdlib"]
 	path = manifests/modules/stdlib
 	url = https://github.com/puppetlabs/puppetlabs-stdlib.git
+[submodule "maven"]
+	path = manifests/modules/maven
+	url = https://github.com/maestrodev/puppet-maven.git
