@@ -1,5 +1,4 @@
 .tmp/
-tomcat/
 .vagrant
 .librarian/
 *.lock
