@@ -46,7 +46,7 @@ class java-development-env {
   }
 
   
-  $tomcat_url = "http://apache.mirrors.pair.com/tomcat/tomcat-7/v7.0.42/bin/apache-tomcat-7.0.42.tar.gz"
+  $tomcat_url = "http://apache.mirrors.pair.com/tomcat/tomcat-7/v7.0.50/bin/apache-tomcat-7.0.50.tar.gz"
    
   Exec {
     path  => "${::path}",
