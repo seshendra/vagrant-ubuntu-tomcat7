@@ -1,8 +1,11 @@
 class java-development-env {
   include apt
   include maven
-  
+
   apt::ppa { "ppa:webupd8team/java": }
+
+  # Set current Tomcat download url.
+  $tomcat_url = "http://apache.mirrors.pair.com/tomcat/tomcat-7/v7.0.52/bin/apache-tomcat-7.0.52.tar.gz"
 
   exec { 'apt-get update':
     command => '/usr/bin/apt-get update',
@@ -18,7 +21,7 @@ class java-development-env {
   package { ["vim",
              "curl",
              "git-core",
-			 "expect",
+			       "expect",
              "bash"]:
     ensure => present,
     require => Exec["apt-get update"],
@@ -45,34 +48,41 @@ class java-development-env {
 		local_repo          => '/vagrant/maven/.m2/repository'
   }
 
-  
-  $tomcat_url = "http://apache.mirrors.pair.com/tomcat/tomcat-7/v7.0.50/bin/apache-tomcat-7.0.50.tar.gz"
-   
   Exec {
     path  => "${::path}",
   }
-  
+
   group { "puppet":
     ensure  => present,
   }
-  
+
   package { "acpid":
     ensure  => installed,
   }
-  
+
   package { "supervisor":
     ensure  => installed,
   }
   package { "wget":
     ensure  => installed,
   }
-  
+
   user { "vagrant":
     ensure    => present,
     comment   => "Tomcat User",
     home      => "/home/vagrant",
     shell     => "/bin/bash",
   }
+
+  exec { "check_tomcat_url":
+    cwd       => "/tmp",
+    command   => "wget -S --spider ${tomcat_url}",
+    timeout   => 900,
+    require   => Package["wget"],
+    notify    => Exec["get_tomcat"],
+    logoutput => "on_failure"
+  }
+
   exec { "get_tomcat":
     cwd       => "/tmp",
     command   => "wget ${tomcat_url} -O tomcat.tar.gz > /opt/.tomcat_get_tomcat",
@@ -80,6 +90,7 @@ class java-development-env {
     timeout   => 900,
     require   => Package["wget"],
     notify    => Exec["extract_tomcat"],
+    logoutput => "on_failure"
   }
   exec { "extract_tomcat":
     cwd         => "/vagrant",
@@ -96,7 +107,7 @@ class java-development-env {
 	</tomcat-users>",
 		require   => Exec["extract_tomcat"],
 	  }
-	
+
   file { "/vagrant/tomcat":
     ensure    => directory,
     owner     => "vagrant",
@@ -122,5 +133,3 @@ stopsignal=QUIT",
 }
 
 include java-development-env
-
-

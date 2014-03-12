@@ -7,25 +7,33 @@ Will add more instructions with a sample project in the next few days.
 Ensure you have the following tools installed:
 * virtualbox - https://www.virtualbox.org/
 * vagrant - http://www.vagrantup.com/
+* URL to current apache-tomcat-7.x.x.tar.gz (Ex http://apache.mirrors.pair.com/tomcat/tomcat-7/v7.0.50/bin/apache-tomcat-7.0.52.tar.gz)
+	* Update the `$tomcat_url` definition in `manifests/default.pp` if the url is out of date.
 * librarian-puppet - https://github.com/rodjek/librarian-puppet
 	* puppet installation is optional, the modules have been added as gitsubmodules and pushed to the repo. It's necessary only if you think the modules are outdated
 
 ## Vagrant Setup
-Do the following:
+###Do the following:
 * $ ```vagrant box add precise32 http://files.vagrantup.com/precise32.box```
 	* This will download the VM for you
-* ```git clone https://github.com/seshendra/vagrant-ubuntu-tomcat7.git```
+* $ ```git clone https://github.com/seshendra/vagrant-ubuntu-tomcat7.git```
 	* clone this repoistory (it's your working vagrant location)
-* If librarian-puppet is not installed, use ```git submodule init``` and ```git submodule update``` from the project root directory
-	* The above step will clone the puppet modules and you can skip to the next step
-* $ ```cd vagrant-ubuntu-tomcat7/manifests```
-* $ ```librarian-puppet install```
-	* grabs the puppet modules for you
-* $ ```cd ..```
+* **If librarian-puppet is installed**, grab the puppet modules:
+	* $ ```cd vagrant-ubuntu-tomcat7/manifests```
+	* $ ```librarian-puppet install```
+	* $ ```cd ..```
+
+* Otherwise, **if librarian-puppet is not installed**, clone the puppet modules
+	* $ ```cd vagrant-ubuntu-tomcat7```
+	* $ ```git submodule init```
+  	* $ ```git submodule update```
+
 * $ ```vagrant up```
 	* brings up the VM with tomcat and java installed.
 	* This can take anywhere between 20-30 minutes, so issue the command and go have some coffee or attend a meeting or watch a video while vagrant does it's job.
 	* If you are in a VPN, ensure *ubuntu.com and *apache.com are open for downloads in your organization.
+* $ ```vagrant ssh```
+	* Login to your instance.
 
 ## Deployment Details
 * Tomcat is set at auto-start to false
