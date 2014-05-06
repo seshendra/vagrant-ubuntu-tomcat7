@@ -1,8 +1,6 @@
 forge "http://forge.puppetlabs.com"
 
-mod 'apt',
-   :git => 'https://github.com/puppetlabs/puppetlabs-apt.git',
-   :ref => 'feature/master/dans_refactor'
-
-mod 'stdlib',
-	:git => 'https://github.com/puppetlabs/puppetlabs-stdlib.git'
+mod 'puppetlabs/apt', '1.4.2'
+mod 'puppetlabs/stdlib', '3.2.1'
+mod 'maestrodev/maven', '1.1.11'
+mod 'maestrodev/wget', '1.4.1'

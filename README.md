@@ -40,6 +40,8 @@ Ensure you have the following tools installed:
   * use ```sudo supervisorctl start tomcat``` to start tomcat
 * Vagrant is setup to map port 8080 of the VM to port 4880 on your machine
 	*  http://localhost:4880/
+* JMX support is enabled on the server: Vagrant is setup to map port 1099 of the VM to port 1099 on your machine, allowing for monitoring and remote deployment.
+* Tomcat is started in debug mode: Vagrant is setup to map port 8000 of the VM to port 4800 on your machine, allowing for debugging from your IDE.
 
 ## Package as a box for customizing in your projects
 * After box is configured and provisioned, you can package and use this as your base box to speed up your subsequent reloads
