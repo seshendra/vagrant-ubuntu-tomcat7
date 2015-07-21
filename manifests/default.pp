@@ -5,7 +5,7 @@ class java-development-env {
   apt::ppa { "ppa:webupd8team/java": }
 
   # Set current Tomcat download url.
-  $tomcat_url = "http://artfiles.org/apache.org/tomcat/tomcat-7/v7.0.59/bin/apache-tomcat-7.0.59.tar.gz"
+  $tomcat_url = "http://apache.mirrors.pair.com/tomcat/tomcat-8/v8.0.24/bin/apache-tomcat-8.0.24.tar.gz"
 
   exec { 'apt-get update':
     command => '/usr/bin/apt-get update',
