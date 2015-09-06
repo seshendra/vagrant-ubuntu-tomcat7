@@ -1,4 +1,4 @@
-forge "http://forge.puppetlabs.com"
+forge "https://forgeapi.puppetlabs.com"
 
 mod 'puppetlabs/apt', '1.4.2'
 mod 'puppetlabs/stdlib', '3.2.1'
